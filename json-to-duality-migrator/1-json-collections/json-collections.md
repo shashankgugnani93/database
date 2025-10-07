@@ -31,12 +31,11 @@ In this task, we will create a JSON collection table called `attendee` that repr
 
    ![DB Actions](images/dbaction1.png)
 
-
 2. Below you can find the Database Actions homepage. Click the SQL tile under development to open the SQL worksheet.
 
    ![Homepage Development SQL](./images/development-sql.png)
 
-3. In the SQL worksheet, create the `attendee` collection. 
+3. In the SQL worksheet, create the `attendee` collection.
 
       Copy the SQL below and press the 'run script' button.
 
@@ -117,10 +116,9 @@ In this task, we will create a JSON collection table called `attendee` that repr
       ![Task 2 Step 1a Output](../1-json-collections/images/task2-step1a.png " ")
 
       **Tip:** If you get to the end of a long JSON column, you will see an eye. If you click on that eye, you will see your JSON document in a separate window in pretty format.
-      
+
       ![Task 2 Step 1a Output pretty](../1-json-collections/images/task2-step1a-pretty.png " ")
 
-      
       We can also select specific fields within the JSON document by using the dot notation to peek inside the document.
 
       ```sql
@@ -181,6 +179,7 @@ In this task, we will update lecture name for lecture id 40, from "JSON Duality 
       WHERE JSON_EXISTS(data, '$.lectures[*]?(@.id == 40)');
       </copy>
       ```
+
       You will see three records returned. For legibility we expanded one of the three records to show the redundant information about lecture 40 in one JSON document.
 
       ![Task 3 Step 1 Output](../1-json-collections/images/task3-step1.png " ")

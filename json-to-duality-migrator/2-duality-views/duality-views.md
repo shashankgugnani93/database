@@ -29,7 +29,6 @@ In this task, we will create a duality view called `attendee` that represents a 
 
    ![DB Actions](images/dbaction1.png)
 
-
 2. Below you can find the Database Actions homepage. Click the SQL tile under development to open the SQL worksheet.
 
    ![Homepage Development SQL](./images/development-sql.png)
@@ -73,14 +72,14 @@ In this task, we will create a duality view called `attendee` that represents a 
       </copy>
       ```
 
-2. Create two duality views - attendee and lectures - that represent the JSON document representation of the two entities we want to look at.
+4. Create two duality views - attendee and lectures - that represent the JSON document representation of the two entities we want to look at.
 
       ```sql
       <copy>
       DROP TABLE IF EXISTS attendee;
       DROP TABLE IF EXISTS lecture;
       DROP VIEW IF EXISTS lecture;
-      
+
       CREATE OR REPLACE JSON DUALITY VIEW attendee AS
       attendees @insert @update @delete
       {
@@ -108,14 +107,14 @@ In this task, we will create a duality view called `attendee` that represents a 
       {
          _id: id,
          lectureName: name,
-         lectureCredtis: credits
+         lectureCredits: credits
       };
       </copy>
       ```
 
    Note how the view definition uses GraphQL-like what-you-see-is-what-you-get syntax which makes it easy to determine what the view output will look like.
 
-3. Insert data into the attendee duality view.
+5. Insert data into the attendee duality view.
 
       ```sql
       <copy>
@@ -253,15 +252,16 @@ In this task, we will update lecture name for lecture id 40, from "JSON Duality 
 
       ![Task 3 Step 1 Output](../2-duality-views/images/task3-step1.png " ")
 
-2. Update the lecture name in the equivalent lecture document using `JSON_TRANSFORM` to update the lecture name only for the matching lecture id. 
+2. Update the lecture name in the equivalent lecture document using `JSON_TRANSFORM` to update the lecture name only for the matching lecture id.
 
-      This demonstrates one of the big benefits of Json Relational Duality Views. First, we have multiple document representations on top of the same data. As you see here, we expose documents for our lectures, as well as documents for out attendee's schedules. 
+      This demonstrates one of the big benefits of Json Relational Duality Views. First, we have multiple document representations on top of the same data. As you see here, we expose documents for our lectures, as well as documents for out attendee's schedules.
 
       ```sql
       <copy>
       SELECT data FROM lecture l WHERE l.data."_id" = 40;
       </copy>
       ```
+
       ![Show lecture document for id 40](../2-duality-views/images/lecture-document.png " ")
 
       Let's now update this document.
@@ -278,6 +278,7 @@ In this task, we will update lecture name for lecture id 40, from "JSON Duality 
       COMMIT;
       </copy>
       ```
+
       ![Update lecture document for id 40](../2-duality-views/images/update-lecture-document.png " ")
 
       This statement updates **one lecture document**, as a result of which the row in the lecture table storing lecture id 40's information has been updated. As a result, the updated lecture information is **immediately reflected in all attendee's documents containing it**. This is one of the biggest advantages of duality views - updates to shared data are immediately reflected everywhere they are referenced!
@@ -290,6 +291,7 @@ In this task, we will update lecture name for lecture id 40, from "JSON Duality 
       FROM attendee;
       </copy>
       ```
+
       You can scroll through the documents or drill down into the detail of individual documents. For illustration purposes we highlight two of the changed entries in the screenshot below. (We actually updated three documents before, so you will find the third one when scrolling to the right.)
 
       ![Task 3 Step 3 Output](../2-duality-views/images/task3-step3.png " ")

@@ -8,7 +8,6 @@ Watch this quick video to know why JSON Relational Duality is awesome.
 
 [](youtube:Eb_ytQBw2i8)
 
-
 ### **JSON Relational Duality**
 
 JSON Relational Duality is a landmark capability in Oracle Database 23ai providing game-changing flexibility and simplicity for Oracle Database developers. This breakthrough innovation overcomes the historical challenges developers have faced when building applications, using relational or document models.
@@ -46,7 +45,6 @@ How does the JSON to Duality Migrator work?
 2. Uses sophisticated unsupervised machine learning (ML) algorithms to create a normalized relational schema
 3. Eliminates duplication by identifying shared data across collections
 4. Uses functional dependency analysis to automatically identify primary keys for each entity and foreign keys between the identified entities
-
 
 ### Objectives
 

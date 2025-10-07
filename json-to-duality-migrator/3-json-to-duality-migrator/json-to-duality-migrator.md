@@ -41,11 +41,9 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
 
    ![DB Actions](images/dbaction1.png)
 
-
 2. Below you can find the Database Actions homepage. Click the SQL tile under development to open the SQL worksheet.
 
    ![Homepage Development SQL](./images/development-sql.png)
-
 
 3. Let's now drop all the objects that we created in the previous lab first.
 
@@ -69,6 +67,7 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
     /
     </copy>
     ```
+
     This code basically drops all tables that were created in the last 2 hours. If it took you longer to get to this point in the lab, then you need to increase the time window.
 
     Let's check that there are no objects existent in our schema anymore, or at least no objects that will collide with this workshop.
@@ -78,9 +77,10 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
     SELECT * FROM user_tables;
     </copy>
     ```
+
    ![Existing tables in schema](./images/schema-tables.png)
 
-2. Create the `speaker`, `attendee`, and `lecture` collections.
+4. Create the `speaker`, `attendee`, and `lecture` collections.
 
     ```sql
     <copy>
@@ -96,28 +96,28 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
     </copy>
     ```
 
-3. Insert data into the `speaker`, `attendee`, and `lecture` collections.
+5. Insert data into the `speaker`, `attendee`, and `lecture` collections.
 
     ```sql
     <copy>
     INSERT INTO speaker VALUES
-      ('{"_id"            : 101,
+      ('{"_id"             : 101,
           "name"           : "Abdul J.",
           "phoneNumber"    : "222-555-011",
           "yearsAtOracle"  : 25,
           "department"     : "Product Management",
           "lecturesTaught" : [ {"id" : 10, "lectureName" : "JSON and SQL",  "classType" : "Online"},
-                              {"id" : 20, "lectureName" : "PL/SQL or Javascript", "classType" : "In-person"} ]}');
+                               {"id" : 20, "lectureName" : "PL/SQL or Javascript", "classType" : "In-person"} ]}');
     INSERT INTO speaker VALUES
-      ('{"_id"            : 102,
+      ('{"_id"             : 102,
           "name"           : "Betty Z.",
           "phoneNumber"    : "222-555-022",
           "yearsAtOracle"  : 30,
           "department"     : "Autonomous Databases",
           "lecturesTaught" : [ {"id" : 30, "lectureName" : "MongoDB API Internals", "classType" : "In-person"},
-                              {"id" : 40, "lectureName" : "Oracle ADB on iPhone", "classType" : "Online"} ]}');
+                               {"id" : 40, "lectureName" : "Oracle ADB on iPhone", "classType" : "Online"} ]}');
     INSERT INTO speaker VALUES
-      ('{"_id"            : 103,
+      ('{"_id"             : 103,
           "name"           : "Colin J.",
           "phoneNumber"    : "222-555-023",
           "yearsAtOracle"  : 27,
@@ -125,7 +125,7 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
           "lecturesTaught" : [ {"id" : 50, "lectureName" : "JSON Duality Views", "classType" : "Online"} ]}');
 
     INSERT INTO attendee VALUES
-      ('{"_id"          : 1,
+      ('{"_id"           : 1,
           "firstName"    : "Beda",
           "lastName"     : "Hammerschmidt",
           "nickName"     : "Dr. JSON",
@@ -133,22 +133,22 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
           "phoneNumber"  : "222-111-021",
           "coffeeItem"   : "Espresso",
           "lectures" : [ {"id" : 10, "lectureName" : "JSON and SQL", "credits" : 3},
-                        {"id" : 20, "lectureName" : "PL/SQL or Javascript", "credits" : 4},
-                        {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5},
-                        {"id" : 40, "lectureName" : "Oracle ADB on iPhone", "credits" : 3},
-                        {"id" : 50, "lectureName" : "JSON Duality Views", "credits" : 3} ]}');
+                         {"id" : 20, "lectureName" : "PL/SQL or Javascript", "credits" : 4},
+                         {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5},
+                         {"id" : 40, "lectureName" : "Oracle ADB on iPhone", "credits" : 3},
+                         {"id" : 50, "lectureName" : "JSON Duality Views", "credits" : 3} ]}');
     INSERT INTO attendee VALUES
-      ('{"_id"          : 2,
+      ('{"_id"           : 2,
           "firstName"    : "Hermann",
           "lastName"     : "Baer",
           "age"          : 22,
           "phoneNumber"  : "222-112-023",
           "coffeeItem"   : "Cappuccino",
           "lectures" : [ {"id" : 10, "lectureName" : "JSON and SQL", "credits" : 3},
-                        {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5},
-                        {"id" : 50, "lectureName" : "JSON Duality Views", "credits" : 3} ]}');
+                         {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5},
+                         {"id" : 50, "lectureName" : "JSON Duality Views", "credits" : 3} ]}');
     INSERT INTO attendee VALUES
-      ('{"_id"           : 3,
+      ('{"_id"            : 3,
           "firstName"     : "Shashank",
           "lastName"      : "Gugnani",
           "nickName"      : "SG",
@@ -156,9 +156,9 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
           "phoneNumber"   : "222-112-024",
           "coffeeItem"    : "Americano",
           "lectures" : [ {"id" : 10, "lectureName" : "JSON and SQL", "credits" : 3},
-                        {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5} ]}');
+                         {"id" : 30, "lectureName" : "MongoDB API Internals", "credits" : 5} ]}');
     INSERT INTO attendee VALUES
-      ('{"_id"          : 4,
+      ('{"_id"           : 4,
           "firstName"    : "Julian",
           "lastName"     : "Dontcheff",
           "nickName"     : "Jul",
@@ -168,31 +168,31 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
           "lectures" : [ {"id" : 40, "lectureName" : "JSON Duality Views", "credits" : 3} ]}');
 
     INSERT INTO lecture VALUES
-      ('{"_id"               : 10,
+      ('{"_id"                : 10,
           "lectureName"       : "JSON and SQL",
           "creditHours"       : 3,
           "attendeesEnrolled" : [ {"_id" : 1, "name": "Beda", "age" : 20},
                                   {"_id" : 2, "name": "Hermann", "age" : 22},
                                   {"_id" : 3, "name": "Shashank", "age" : 23} ]}');
     INSERT INTO lecture VALUES
-      ('{"_id"               : 20,
+      ('{"_id"                : 20,
           "lectureName"       : "PL/SQL or Javascript",
           "creditHours"       : 4,
           "attendeesEnrolled" : [ {"_id" : 1, "name": "Beda", "age" : 20} ]}');
     INSERT INTO lecture VALUES
-      ('{"_id"               : 30,
+      ('{"_id"                : 30,
           "lectureName"       : "MongoDB API Internals",
           "creditHours"       : 5,
           "attendeesEnrolled" : [ {"_id" : 1, "name": "Beda", "age" : 20},
                                   {"_id" : 2, "name": "Hermann", "age" : 22},
                                   {"_id" : 3, "name": "Shashank", "age" : 23} ]}');
     INSERT INTO lecture VALUES
-      ('{"_id"               : 40,
+      ('{"_id"                : 40,
           "lectureName"       : "Oracle ADB on iPhone",
           "creditHours"       : 3,
           "attendeesEnrolled" : [ {"_id" : 1, "name": "Beda", "age" : 20} ]}');
     INSERT INTO lecture VALUES
-      ('{"_id"               : 50,
+      ('{"_id"                : 50,
           "lectureName"       : "JSON Duality Views",
           "creditHours"       : 3,
           "attendeesEnrolled" : [ {"_id" : 1, "name": "Beda", "age" : 20},
@@ -207,7 +207,7 @@ In this task, we will create JSON collection tables `speaker`, `attendee`, and `
 
 In this task, we will infer a normalized relational schema using data from our JSON collections. The JSON to Duality Migrator will analyze the data in the input collections, and recommend a set of relational tables (including constraints, indexes, and sequences) and a set of duality views to match the input JSON collections.
 
-1. Run the `INFER_AND_GENERATE_SCHEMA` procedure to infer a relational schema using a few lines of PL/SQL code. This procedure will analyze the data in our input collections, infer an optimized normalized relational schema, and generate a DDL script to create the relational schema along with duality views for each collection. 
+1. Run the `INFER_AND_GENERATE_SCHEMA` procedure to infer a relational schema using a few lines of PL/SQL code. This procedure will analyze the data in our input collections, infer an optimized normalized relational schema, and generate a DDL script to create the relational schema along with duality views for each collection.
 
     ```sql
     <copy>
@@ -230,6 +230,7 @@ In this task, we will infer a normalized relational schema using data from our J
     /
     </copy>
     ```
+
     Here, we store the generated DDL script in a `CLOB` variable and then call the `EXECUTE IMMEDIATE` PL/SQL construct to execute the script.
 
     ![Infer and generate schema](../3-json-to-duality-migrator/images/infer-and-generate.png " ")
@@ -300,6 +301,7 @@ In this task, we will import data from input JSON collections into the duality v
     /
     </copy>
     ```
+
     ![Import data](../3-json-to-duality-migrator/images/import-data.png " ")
 
 3. Query the error logs. The error logs are empty, showing that there are no import errors — there are no documents that did not get imported.
@@ -314,7 +316,7 @@ In this task, we will import data from input JSON collections into the duality v
 
     ![Task 3 Step 3 Output](../3-json-to-duality-migrator/images/task3-step3.png " ")
 
-    > **_NOTE:_** In case you find that some documents could not be imported successfully, you can look at the error message to understand the reason for the failure, fix the error by either modifying the relational schema or document contents, and reimport the failed document set.
+    > **NOTE:** In case you find that some documents could not be imported successfully, you can look at the error message to understand the reason for the failure, fix the error by either modifying the relational schema or document contents, and reimport the failed document set.
 
 In this lab, we used the default configuration options when invoking the `INFER_AND_GENERATE_SCHEMA` procedure and did not customize the relational schema in any way. However, in many use cases, you may want to customize the relational schema based on business requirements and the application model. In the next lab, we will see how to use a few configuration options to customize and design the relational schema with the JSON to Duality Migrator.
 
