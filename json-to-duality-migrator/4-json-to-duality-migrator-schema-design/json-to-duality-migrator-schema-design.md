@@ -214,7 +214,7 @@ In this task, we will infer a customized normalized relational schema using data
 
     Let's inspect the output DDL script. Since `coffeeItem` appears in fewer than 30% of documents, there is no column in the relational schema for the field, nor does it appear in the duality view definition.
 
-    So what happens when you import the input data into this duality view? Can you guess from what we learnt in lab 4? Since the migrator creates flex JSON columns by default, the `coffeeItem` field will be inserted into the flex column! This is a great way of handling rare fields - set `minFieldFrequency` as desired and the migrator handles the rest.
+    So what happens when you import the input data into this duality view? Can you guess from what we learnt in previous labs? Since the migrator creates flex JSON columns by default, the `coffeeItem` field will be inserted into the flex column! This is a great way of handling rare fields - set `minFieldFrequency` as desired and the migrator handles the rest.
 
     ![Automatic flex field for attendees](./images/attendee-flexfield.png)
 
